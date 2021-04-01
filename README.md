@@ -5,6 +5,10 @@ Read and write a byte to SPI EEPROM (25LC040)
 
 https://github.com/Ltran0325/MSP432-SPI-EEPROM/blob/main/main.c
 
+25LC040 Datasheet:
+
+http://ww1.microchip.com/downloads/en/devicedoc/21204e.pdf
+
 ### READ:
 
 ![image](https://user-images.githubusercontent.com/62213019/113335699-28cd4880-92da-11eb-974d-c92428ee64c9.png)
