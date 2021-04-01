@@ -32,12 +32,14 @@ int main(void)
 
     WDT_A->CTL = WDT_A_CTL_PW |             // Stop watchdog timer
                  WDT_A_CTL_HOLD;
-
+    
+    //-- Setup EEPROM Pins
     P1->SEL0 |= BIT4 | BIT5 | BIT6 | BIT7;  // set 4-SPI pin as second function
 
     P8->DIR |= BIT7;    // CS Pin GPIO
     P8->OUT |= BIT7;
 
+    //-- Setup eUSCI_B SPI registers
     EUSCI_B0->CTLW0 |= EUSCI_B_CTLW0_SWRST; // Put state machine in reset
 
     EUSCI_B0->CTLW0 = EUSCI_B_CTLW0_SWRST | // Remain in reset state
@@ -48,15 +50,16 @@ int main(void)
                        EUSCI_B_CTLW0_STEM | // STE mode select
                   EUSCI_B_CTLW0_SSEL__ACLK; // ACLK
 
-    EUSCI_B0->BRW = 1;  //2,fBitClock = fBRCLK/(UCBRx+1).
-    EUSCI_B0->CTLW0 &= ~EUSCI_B_CTLW0_SWRST;// **Initialize USCI state machine**
-
+    EUSCI_B0->BRW = 1;  //fBitClock = fBRCLK/(UCBRx+1).
+    
+    EUSCI_B0->CTLW0 &= ~EUSCI_B_CTLW0_SWRST; // Enable eUSCI_B SPI
+    
     while(1)
     {
         read_EEPROM(0);         // read EEPROM at address
-        write_EEPROM(0, 0xA7);  // write a byte to address
+        write_EEPROM(0, 0xC9);  // write a byte to address
 
-        for(i = 0; i < 1000; i++){}
+        for(i = 0; i < 1000; i++){} 
     }
 }
 
@@ -80,10 +83,10 @@ void wait_busy(void){
         P8->OUT &= ~BIT7;    // CS select
 
         SPI_transfer(RDSR);
-        status = SPI_transfer(0);
+        status = SPI_transfer(0) & BIT0;
 
         P8->OUT |= BIT7;     // CS release
-    } while(status == 1);
+    } while(status == 1);    // wait while write in progress
 
 }
 
