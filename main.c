@@ -5,7 +5,6 @@
 * Device:  MSP432P401R LaunchPad                                               *
 * Program: Write and Read a byte to SPI EEPROM (25LC040)                       *
 *                                                                              *
-* Demo: https://www.youtube.com/watch?v=S_Ci-Jl91bw                            *
 *******************************************************************************/
 
 #include "msp.h"
