@@ -3,6 +3,7 @@
 ### SPI EEPROM Operation:
 Read and write a byte to SPI EEPROM (25LC040)
 
+https://github.com/Ltran0325/MSP432-SPI-EEPROM/blob/main/main.c
 
 ### READ:
 
