@@ -35,6 +35,14 @@ Source: 25LC040 datasheet
 4. Send byte to be written
 5. Pull CS high
 
+### Circuit Setup:
+![image](https://user-images.githubusercontent.com/62213019/113356078-97200400-92f6-11eb-88fc-5f6e8cfd3292.png)
+
+Source: 25LC040 datasheet
+
+![image](https://user-images.githubusercontent.com/62213019/113356022-81aada00-92f6-11eb-8e76-0e11fa0d790d.png)
+
+
 
 
 
