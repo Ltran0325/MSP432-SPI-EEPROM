@@ -1,5 +1,19 @@
 # MSP432-SPI-EEPROM
 
+### SPI Basics:
+
+![image](https://user-images.githubusercontent.com/62213019/129626245-543b62bc-bbc0-48e1-9f64-ec390cfd4d86.png)
+
+Also known as four-wire serial interface. The Serial Peripheral Interface BUS (SPI) has four wires: SCLK, MOSI, MISO, and SS.
+
+1. SCLK - serial clock line
+2. MOSI - master-out-slave-in data line
+3. MISO - master-in-slave-out data line
+4. SS   - slave select line
+
+![image](https://user-images.githubusercontent.com/62213019/129627036-3ffac29d-6939-4d6c-9d03-7c0f8e565f01.png)
+
+SPI uses two shift registers to transmit and receive data. 
 ### SPI EEPROM Operation:
 Read and write a byte to SPI EEPROM (25LC040)
 
